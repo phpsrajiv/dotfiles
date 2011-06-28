@@ -1,0 +1,32 @@
+[alias]
+  ci = commit
+  aa = add .
+  st = status
+  br = branch
+  co = checkout
+  df = diff
+  lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+  lo = log --oneline
+  authors = log --pretty=format:'%an <%ae>'
+[user]
+  name = madhums
+  email = madhums8@gmail.com
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow 
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[github]
+  user = madhums
