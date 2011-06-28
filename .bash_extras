@@ -1,0 +1,61 @@
+#get the ip address of a host easily.
+getip () {
+  for each in "$@"; do
+    echo $each
+    echo "nslookup:"
+    nslookup $each | grep Address: | grep -v '#' | egrep -o '([0-9]+\.){3}[0-9]+'
+    echo "ping:"
+    ping -c1 -t1 $each | egrep -o '([0-9]+\.){3}[0-9]+' | head -n1
+  done
+}
+
+newproject() {
+  if [ ! -d $1 ]; then
+    mkdir $1
+    cd $1
+    echo 'Creating new project...';
+    git init
+    echo 'Initializing git...';
+    touch README.md
+    echo 'Adding README file...';
+    touch .gitignore
+    echo 'Adding .gitignore file...';
+    
+    git add .
+    git commit -am "first commit"   
+    
+    if [ -n "$2" ]; then 
+      git remote add origin $2
+      echo 'Adding git remote origin...';
+    fi
+    echo 'Project setup complete!';
+  else
+    echo 'Directory with name' $1 'already exists';
+    echo 'Aborted!'
+  fi
+}
+
+showsshkey(){
+  cat ~/.ssh/id_rsa.pub
+}
+
+# Show the IP addresses of this machine, with each interface that the address is on.
+ips () {
+  local interface=""
+  local types='vmnet|en|eth|vboxnet'
+  local i
+  for i in $(
+    ifconfig \
+    | egrep -o '(^('$types')[0-9]|inet (addr:)?([0-9]+\.){3}[0-9]+)' \
+    | egrep -o '(^('$types')[0-9]|([0-9]+\.){3}[0-9]+)' \
+    | grep -v 127.0.0.1
+  ); do
+    if ! [ "$( echo $i | perl -pi -e 's/([0-9]+\.){3}[0-9]+//g' )" == "" ]; then
+      interface="$i":
+    else
+      echo $interface $i
+    fi
+  done
+}
+
+
