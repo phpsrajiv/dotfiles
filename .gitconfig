@@ -1,10 +1,19 @@
 [alias]
-  ci = commit
+  c  = commit
+  cm = commit -m
+  cam = commit -am
+  a = add
   aa = add .
   st = status
   br = branch
   co = checkout
   df = diff
+  ps = push
+  pl = pull
+  fe = fetch
+  cl = clone
+  ra = remote add
+  rao = remote add origin
   lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
   lo = log --oneline
   authors = log --pretty=format:'%an <%ae>'
