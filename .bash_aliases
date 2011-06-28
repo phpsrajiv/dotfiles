@@ -1,0 +1,56 @@
+# cd
+alias ..='cd ..'
+alias cdn='cd ~/node.js/'
+alias cdr='cd ~/ror/'
+alias cdh='cd ~'
+alias cdd='cdd'
+# git
+alias g='git'
+alias gi='git init && touch .gitignore && touch README.md'
+alias ga='git add'
+alias gaa='git add .'
+alias gst='git status'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gcam='git commit -am'
+alias gbr='git branch'
+alias gco='git checkout'
+alias gdf='git diff'
+alias gps='git push'
+alias gpl='git pull'
+alias gfe='git fetch'
+alias gcl='git clone'
+alias gra='git remote add'
+alias grao='git remote add origin'
+alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
+alias glo='git log --oneline'
+alias gau='git authors = log --pretty=format:"%an <%ae>"'
+
+# rails
+alias ss='script/server'
+alias rs='rails server'
+alias sc='script/console'
+alias rc='rails/console'
+alias sg='script/generate'
+alias rg='rails generate'
+alias tlog='tail -f log/development.log'
+alias scaffold='script/generate nifty_scaffold'
+alias migrate='rake db:migrate'
+alias rst='touch tmp/restart.txt'
+
+# node
+alias n='node'
+alias nm='nodemon'
+alias ni='npm install'
+alias nig='npm install -g'
+alias nv='npm view'
+alias nf='npm find'
+alias nu='npm uninstall'
+alias nug='npm uninstall -g'
+
+# ubuntu
+alias install='sudo apt-get install'
+alias remove='sudo apt-get remove'
+alias update='sudo apt-get update'
+
+
