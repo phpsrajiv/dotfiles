@@ -24,7 +24,7 @@ alias gra='git remote add'
 alias grao='git remote add origin'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 alias glo='git log --oneline'
-alias gau='git authors = log --pretty=format:"%an <%ae>"'
+alias gau='git log --pretty=format:"%an <%ae>"'
 
 # rails
 alias ss='script/server'
