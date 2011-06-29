@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ ! -d ~/.dotfile_backup ]; then
   mkdir ~/.dotfile_backup
