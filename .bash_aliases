@@ -4,6 +4,7 @@ alias cdn='cd ~/node.js/'
 alias cdr='cd ~/ror/'
 alias cdh='cd ~'
 alias cdd='cdd'
+
 # git
 alias g='git'
 alias gi='git init && touch .gitignore && touch README.md'
@@ -27,7 +28,6 @@ alias glo='git log --oneline'
 alias gau='git log --pretty=format:"%an <%ae>"'
 
 # rails
-
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
    ${COLOR_BLUE}rr${COLOR_NC}server
    ${COLOR_BLUE}rr${COLOR_NC}server${COLOR_BLUE}production
