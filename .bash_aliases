@@ -12,7 +12,7 @@ alias gaa='git add .'
 alias gst='git status'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias gcam='git commit -am'
+alias gcma='git commit -am'
 alias gbr='git branch'
 alias gco='git checkout'
 alias gdf='git diff'
@@ -113,4 +113,7 @@ alias tail='tail -f'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+# apache2
+alias a2restart='sudo /etc/init.d/apache2 restart'
 
