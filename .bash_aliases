@@ -3,7 +3,7 @@ alias ..='cd ..'
 alias cdn='cd ~/node.js/'
 alias cdr='cd ~/ror/'
 alias cdh='cd ~'
-alias cdd='cdd'
+alias cdd='cd ~/Desktop'
 
 # git
 alias g='git'
