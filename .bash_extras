@@ -1,4 +1,4 @@
-#get the ip address of a host easily.
+# get the ip address of a host easily.
 getip () {
   for each in "$@"; do
     echo $each
@@ -9,6 +9,9 @@ getip () {
   done
 }
 
+# Creates a new project by creating a directory of specified name and initializing git.
+# If repo url is provided, it adds the remote branch as origin
+# Also creates a README and .gitignore file
 newproject() {
   if [ ! -d $1 ]; then
     mkdir $1
@@ -16,9 +19,9 @@ newproject() {
     echo 'Creating new project...';
     git init
     echo 'Initializing git...';
-    touch README.md
+    echo '#' $1 > README.md
     echo 'Adding README file...';
-    touch .gitignore
+    echo "*.swp" > .gitignore
     echo 'Adding .gitignore file...';
     
     git add .
@@ -139,4 +142,9 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+if [ -f ~/.paths ]; then
+    . ~/.paths
+fi
+
 
