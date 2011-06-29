@@ -26,6 +26,7 @@ alias grao='git remote add origin'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
 alias glo='git log --oneline'
 alias gau='git log --pretty=format:"%an <%ae>"'
+alias gu='git reset --soft HEAD^' # undo your last commit, dont discard changes
 
 # rails
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
