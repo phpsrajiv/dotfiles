@@ -83,6 +83,4 @@ if [ -f ~/.bash_extras ]; then
     . ~/.bash_extras
 fi
 
-export PATH=/usr/bin/gem1.8:$PATH
-
 
