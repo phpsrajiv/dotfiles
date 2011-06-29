@@ -1,4 +1,5 @@
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # /usr/lib/ruby/gems/1.8
-
+test -d "$HOME/bin" &&
+PATH="$HOME/bin:$PATH"
