@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ ! -d ~/.dotfile_backup ]; then
   mkdir ~/.dotfile_backup
@@ -41,3 +41,4 @@ gconftool-2 --set /apps/gnome-terminal/profiles/Default/foreground_color -t str 
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/bold_color -t str '#000000000000'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/allow_bold -t bool false
 
+source ~/.bashrc
