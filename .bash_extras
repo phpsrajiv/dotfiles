@@ -43,7 +43,7 @@ showsshkey(){
 }
 
 # Show the IP addresses of this machine, with each interface that the address is on.
-ips () {
+myip () {
   local interface=""
   local types='vmnet|en|eth|vboxnet'
   local i
