@@ -159,3 +159,6 @@ export LANG LANGUAGE LC_CTYPE LC_ALL
 showpath () { eval echo \$${1:-PATH} |tr : '\n'; }
 
 reloadfonts() {  sudo fc-cache -fv; }
+
+source ~/.git-flow-completion.bash
+
