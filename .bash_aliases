@@ -104,9 +104,9 @@ alias nu='npm uninstall'
 alias nug='npm uninstall -g'
 
 # ubuntu
-alias install='sudo apt-get install'
+alias install='echo "madhu" | sudo -S apt-get install'
 alias remove='sudo apt-get remove'
-alias update='sudo apt-get update'
+alias update='echo "madhu" | sudo -S apt-get update'
 alias mostusedcommands="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 alias untar='tar xvzf'
 alias rebash='source ~/.bashrc'

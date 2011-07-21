@@ -31,7 +31,7 @@ gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_theme_background -t 
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_theme_colors -t bool false
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/scrollbar_position -t str 'right'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/scrollback_unlimited -t bool true
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/font -t str 'DejaVu Sans Mono 11'
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/font -t str 'Droid Sans Mono 11'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_system_font -t bool false
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/visible_name -t str 'Default'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/alternate_screen_scroll -t bool false
