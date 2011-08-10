@@ -172,7 +172,7 @@ showpath () { eval echo \$${1:-PATH} |tr : '\n'; }
 
 reloadfonts() {  echo "madhu" | sudo -S fc-cache -fv; }
 
-source ~/.git-flow-completion.bash
+source ~/.git-flow-completion.sh
 
 abtest () {
   ab -n $2 -c $3 -H 'Accept-Encoding: gzip' "http://$1/"
