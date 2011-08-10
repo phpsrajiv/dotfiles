@@ -19,7 +19,7 @@
   authors = log --pretty=format:'%an <%ae>'
   merge = merge --no-ff
 [user]
-  name = madhums
+  name = Madhusudhan Srinivasa
   email = madhums8@gmail.com
 [color]
   branch = auto
