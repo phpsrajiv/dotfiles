@@ -3,9 +3,12 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 # /usr/lib/ruby/gems/1.8
 test -d "$HOME/bin" &&
 PATH="$HOME/bin:$PATH"
+export GEM_HOME=$HOME/.gem/ruby/1.8
+export PATH=$HOME/.gem/ruby/1.8/bin:$PATH
 export NODE_INSTALL_PATH=$HOME/local/node
 export PATH=$NODE_INSTALL_PATH/bin:$PATH
 export NODE_PATH=$NODE_INSTALL_PATH:$NODE_INSTALL_PATH/lib/node_modules
 export MONGO_INSTALL_PATH=$HOME/local/mongo
 export MONGO_DB_PATH=/data/db
 export PATH=$MONGO_INSTALL_PATH/bin:$PATH
+export PATH=$HOME/local/sphinx/bin:$PATH

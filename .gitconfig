@@ -17,6 +17,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
   lo = log --oneline
   authors = log --pretty=format:'%an <%ae>'
+  merge = merge --no-ff
 [user]
   name = madhums
   email = madhums8@gmail.com

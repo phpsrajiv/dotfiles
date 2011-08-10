@@ -27,7 +27,7 @@ done
 
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/background_color -t str '#222'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/cursor_shape -t str 'block'
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_theme_background -t bool true
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_theme_background -t bool false
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/use_theme_colors -t bool false
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/scrollbar_position -t str 'right'
 gconftool-2 --set /apps/gnome-terminal/profiles/Default/scrollback_unlimited -t bool true

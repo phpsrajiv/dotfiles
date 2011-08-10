@@ -27,7 +27,8 @@ alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Crese
 alias glo='git log --oneline'
 alias gau='git log --pretty=format:"%an <%ae>"'
 alias gu='git reset --soft HEAD^' # undo your last commit, dont discard changes
-
+alias totalcommits='git log --pretty=oneline master | wc -l'
+alias deploy='git push && cap deploy'
 # rails
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
    ${COLOR_BLUE}rr${COLOR_NC}server
@@ -104,7 +105,7 @@ alias nu='npm uninstall'
 alias nug='npm uninstall -g'
 
 # ubuntu
-alias install='echo "madhu" | sudo -S apt-get install'
+alias install='sudo apt-get install'
 alias remove='sudo apt-get remove'
 alias update='echo "madhu" | sudo -S apt-get update'
 alias mostusedcommands="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
@@ -116,5 +117,5 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # apache2
-alias a2restart='sudo /etc/init.d/apache2 restart'
+alias a2restart='echo "madhu" | sudo -S /etc/init.d/apache2 restart'
 
