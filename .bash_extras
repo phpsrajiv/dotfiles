@@ -1,3 +1,7 @@
+# default editors
+VISUAL=gedit; export VISUAL
+EDITOR=vim; export EDITOR
+
 # get the ip address of a host easily.
 getip () {
   for each in "$@"; do
@@ -178,6 +182,25 @@ abtest () {
   ab -n $2 -c $3 -H 'Accept-Encoding: gzip' "http://$1/"
 }
 
+showsshconfig() {
+  cat ~/.ssh/config
+}
+
+opensshconfig(){
+  $EDITOR ~/.ssh/config
+}
+
+openapacheconf(){
+  sudo $EDITOR /etc/apache2/apache2.conf
+}
+
+openenabledsites(){
+  sudo $EDITOR /etc/apache2/sites-enabled/000-default
+}
+
+openavailablesites(){
+  sudo $EDITOR /etc/apache2/sites-available/
+}
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM function
 
@@ -188,12 +211,18 @@ awesome_bash_prompt () {
   ps1_set --prompt ∫
 }
 
+apacheerrorlog(){
+  tail /var/log/apache2/error.log
+}
+
+apacheaccesslog(){
+  tail /var/log/apache2/access.log
+}
+
 #source $rvm_path/contrib/ps1_functions
 #ps1_set --prompt ∫
 
 
-# default editors
-VISUAL=gedit; export VISUAL
-EDITOR=vim; export EDITOR
+
 
 
