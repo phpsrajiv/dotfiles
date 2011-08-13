@@ -1,22 +1,8 @@
 [alias]
-  c  = commit
   cm = commit -m
   cma = commit -am
-  a = add
-  aa = add .
   st = status
-  br = branch
   co = checkout
-  df = diff
-  ps = push
-  pl = pull
-  fe = fetch
-  cl = clone
-  ra = remote add
-  rao = remote add origin
-  lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-  lo = log --oneline
-  authors = log --pretty=format:'%an <%ae>'
   merge = merge --no-ff
 [user]
   name = Madhusudhan Srinivasa
@@ -40,3 +26,7 @@
   untracked = cyan
 [github]
   user = madhums
+  token = 1a9c96d572c2ee246c07ea7f260604fe
+[core]
+	editor = gedit
+	excludesfile = /home/madhu/.gitignore_global
