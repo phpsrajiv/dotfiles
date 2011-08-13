@@ -1,34 +1,12 @@
 # cd
 alias ..='cd ..'
-alias cdn='cd ~/node.js/'
-alias cdr='cd ~/ror/'
 alias cdh='cd ~'
 alias cdd='cd ~/Desktop'
 
 # git
-alias g='git'
-alias gi='git init && touch .gitignore && touch README.md'
-alias ga='git add'
-alias gaa='git add .'
-alias gst='git status'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gcma='git commit -am'
-alias gbr='git branch'
-alias gco='git checkout'
-alias gdf='git diff'
-alias gps='git push'
-alias gpl='git pull'
-alias gfe='git fetch'
-alias gcl='git clone'
-alias gra='git remote add'
-alias grao='git remote add origin'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
-alias glo='git log --oneline'
-alias gau='git log --pretty=format:"%an <%ae>"'
-alias gu='git reset --soft HEAD^' # undo your last commit, dont discard changes
-alias totalcommits='git log --pretty=oneline master | wc -l'
 alias deploy='git push && cap deploy'
+
 # rails
 alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
    ${COLOR_BLUE}rr${COLOR_NC}server
@@ -39,10 +17,12 @@ alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands:
    ${COLOR_BLUE}rr${COLOR_NC}generate${COLOR_BLUE}migration
    ${COLOR_BLUE}rr${COLOR_NC}migrate${COLOR_BLUE}down
    ${COLOR_BLUE}rr${COLOR_NC}migrate${COLOR_BLUE}up
+   ${COLOR_BLUE}rr${COLOR_NC}log
+   ${COLOR_BLUE}rr${COLOR_NC}restart
 '"
 
-alias tlog='tail -f log/development.log'
-alias rst='touch tmp/restart.txt'
+alias rrlog='tail -f log/development.log'
+alias rrrestart='touch tmp/restart.txt'
 alias rrmigrate='rake db:migrate'
 
 rrmigratedown (){
