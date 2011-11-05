@@ -3,7 +3,8 @@
   cma = commit -am
   st = status
   co = checkout
-  merge = merge --no-ff
+  df = diff
+  cl = clone
 [user]
   name = Madhusudhan Srinivasa
   email = madhums8@gmail.com

@@ -5,10 +5,15 @@ alias cdd='cd ~/Desktop'
 
 # git
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset" --date=relative'
-alias deploy='git push && cap deploy'
+alias gist='~/local/bin/gist.sh'
+alias deployc='git push && cap deploy'
+alias deployh='git push && git push heroku master'
+
+# svn
+alias svndiff='svn diff | less -r'
 
 # rails
-alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands: 
+alias rrshowcommands="echo -e '${COLOR_LIGHT_PURPLE}Available commands:
    ${COLOR_BLUE}rr${COLOR_NC}server
    ${COLOR_BLUE}rr${COLOR_NC}server${COLOR_BLUE}production
    ${COLOR_BLUE}rr${COLOR_NC}generate
@@ -95,7 +100,7 @@ alias tail='tail -f'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias g='gedit'
 
 # apache2
 alias a2restart='echo "madhu" | sudo -S /etc/init.d/apache2 restart'
-

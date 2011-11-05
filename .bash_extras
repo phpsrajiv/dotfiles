@@ -27,11 +27,11 @@ newproject() {
     echo 'Adding README file...';
     echo "*.swp" > .gitignore
     echo 'Adding .gitignore file...';
-    
+
     git add .
-    git commit -am "first commit"   
-    
-    if [ -n "$2" ]; then 
+    git commit -am "first commit"
+
+    if [ -n "$2" ]; then
       git remote add origin $2
       echo 'Adding git remote origin...';
     fi
@@ -74,7 +74,7 @@ fetch_to () {
   wget -U "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.0.5) Gecko/2008120121 Firefox/3.0.5" -O "$to" "$from" || return 1
 }
 
-# Bashmarks is a simple set of bash functions that allows you to bookmark 
+# Bashmarks is a simple set of bash functions that allows you to bookmark
 # folders in the command-line.
 source ~/.bashmarks.sh
 
@@ -111,29 +111,29 @@ prompt_func() {
     previous_return_value=$?;
 
     branch=$(git symbolic-ref -q HEAD 2>/dev/null)
-    
+
     #!(( $? > 0 )) && SHA1=' : '$(git rev-parse --short --quiet HEAD)
     #(( $? > 0 )) && SHA1=''
     # just include \$SHA1 below to display current ref
-    
+
     prompt="\[\033]0;${PWD}\007\]\[${COLOR_NC}\]\W\[${COLOR_GREEN}\]$(__git_ps1)\[${COLOR_LIGHT_RED}\]\[${COLOR_NC}\] "
-    
+
     #prompt="\033]0;${PWD}\007\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_NC}\] "
     #prompt="\[${COLOR_GREEN}\]\w\[${COLOR_GRAY}\]$(__git_ps1)\[${COLOR_YELLOW}\]$(git_dirty_flag)\[${COLOR_NC}\] "
-    
+
     if test $previous_return_value -eq 0
     then
-        PS1="${prompt}> "
+        PS1="${prompt}$ "
         PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] $PS1"
     else
-        PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] ${prompt}\[${COLOR_LIGHT_RED}\]> \[${COLOR_NC}\]"
+        PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] ${prompt}\[${COLOR_LIGHT_RED}\]$ \[${COLOR_NC}\]"
     fi
 }
 PROMPT_COMMAND=prompt_func
 
 # export PS1="\[${COLOR_GREEN}\]\w\[${COLOR_NC}\] > "  # Primary prompt with only a path
 # export PS1="\[${COLOR_RED}\]\w > \[${COLOR_NC}\]"  # Primary prompt with only a path, for root, need condition to use this for root
-# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path 
+# export PS1="\[${COLOR_GRAY}\]\u@\h \[${COLOR_GREEN}\]\w > \[${COLOR_NC}\]"  # Primary prompt with user, host, and path
 # This runs before the prompt and sets the title of the xterm* window.  If you set the title in the prompt
 # weird wrapping errors occur on some systems, so this method is superior
 #export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/} ${USER}@${HOSTNAME%%.*}"; echo -ne "\007"'  # user@host path
@@ -144,7 +144,7 @@ export PS4='+'     # Prompt 4
 
 function xtitle {  # change the title of your xterm* window
   unset PROMPT_COMMAND
-  echo -ne "\033]0;$1\007" 
+  echo -ne "\033]0;$1\007"
 }
 
 if [ -f ~/.bash_aliases ]; then
@@ -202,6 +202,14 @@ openavailablesites(){
   sudo $EDITOR /etc/apache2/sites-available/
 }
 
+openhostsfile(){
+  sudo $EDITOR /etc/hosts
+}
+
+openphpini(){
+  sudo $EDITOR /usr/local/lib/php.ini
+}
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM function
 
 source $rvm_path/scripts/completion
@@ -219,14 +227,5 @@ apacheaccesslog(){
   tail /var/log/apache2/access.log
 }
 
-git-change-author-commiter() {
-  ./.gitchangeauthorcommiter.sh
-}
-
 #source $rvm_path/contrib/ps1_functions
 #ps1_set --prompt ∫
-
-
-
-
-
