@@ -1,0 +1,184 @@
+#!/bin/bash
+
+#
+# Display help
+#
+display_help() {
+  cat <<-help
+
+  Usage: new [options]
+
+  Options:
+
+    new drupal <version> <name>     Install <version> version of drupal
+    new rails <version> <name>      Install <version> version of rails
+    new -v                          Output current version of new
+    new -h                          Display help information
+
+help
+  exit 0
+}
+
+
+#
+# New drupal project
+#
+
+new_drupal_project() {
+  create_vhost $@;
+}
+
+
+#
+# New rails project
+#
+
+new_rails_project() {
+  create_vhost $@;
+}
+
+
+#
+# Create vhost
+#
+
+create_vhost() {
+  cd /etc/apache2/sites-available
+  git checkout drupal
+  echo '
+
+<VirtualHost *:80>
+  ServerName localhost
+  ServerAlias '$3'
+  #PassengerEnabled off
+  DocumentRoot /var/www/'$3'
+  <Directory "/var/www/'$3'/">
+      AllowOverride all
+      RewriteEngine on
+      RewriteBase /
+      RewriteCond %{REQUEST_FILENAME} !-f
+      RewriteCond %{REQUEST_FILENAME} !-d
+      RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+      ExpiresActive On
+      # Cache all files for 2 weeks after access (A).
+      ExpiresDefault A1209600
+      # Do not cache dynamically generated pages.
+      ExpiresByType text/html A1
+      ExpiresByType text/css "access plus 4 years"
+  </Directory>
+</VirtualHost>
+  ' >> default
+  git commit -am "adding new site to vhost"
+  git tag drupal1
+  git tag -d drupal
+  git tag drupal
+  git tag -d drupal1
+
+  echo '127.0.0.1 '$3 >> /etc/hosts
+  echo 'created vhost'
+  sudo /etc/init.d/apache2 restart
+  mysqladmin -h localhost -u root -proot create $3
+  echo $3' database created'
+  echo 'goto http://'$3 'to start customizing your drupal site'
+
+}
+
+
+
+#
+# Install node <version> [config ...]
+#
+
+install_node() {
+  local version=$1; shift
+  local config=$@
+  check_current_version
+
+  # remove "v"
+  version=${version#v}
+
+  # activate
+  local dir=$VERSIONS_DIR/$version
+  if test -d $dir; then
+    # TODO: refactor, this is lame
+    cd $dir \
+      && mkdir -p $N_PREFIX/lib/node \
+      && cp -fr $dir/include/node $N_PREFIX/include \
+      && cp -f $dir/bin/* $N_PREFIX/bin \
+      && cp -fr $dir/lib/node/* $N_PREFIX/lib/node/ .
+  # install
+  else
+    local tarball="node-v$version.tar.gz"
+    local url="http://nodejs.org/dist/$tarball"
+
+    # >= 0.5.x
+    local minor=$(echo $version | cut -d '.' -f 2)
+    test $minor -ge "5" && url="http://nodejs.org/dist/v$version/$tarball"
+
+    install_tarball $version $url $config
+  fi
+}
+
+#
+# Install node <version> <tarball> [config ...]
+#
+
+install_tarball() {
+  local version=$1
+  local url=$2; shift 2
+  local config=$@
+
+  # remove "v"
+  version=${version#v}
+
+  local dir=$VERSIONS_DIR/$version
+  local tarball="node-v$version.tar.gz"
+  local logpath="/tmp/n.log"
+
+  # create build directory
+  mkdir -p $N_PREFIX/n/node-v$version
+
+  # fetch and unpack
+  cd $N_PREFIX/n/node-v$version \
+    && $GET $url | tar xz --strip-components=1 > $logpath 2>&1
+
+  # see if things are alright
+  if test $? -gt 0; then
+    rm $tarball
+    echo "\033[31mError: installation failed\033[0m"
+    echo "  node version $version does not exist,"
+    echo "  n failed to fetch the tarball,"
+    echo "  or tar failed. Try a different"
+    echo "  version or view $logpath to view"
+    echo "  error details."
+    exit 1
+  fi
+
+  cd "$N_PREFIX/n/node-v$version" \
+    && ./configure --prefix $VERSIONS_DIR/$version $config\
+    && JOBS=4 make install \
+    && cd .. \
+    && cleanup $version \
+    && mkdir -p $dir \
+    && echo $config > "$dir/.config" \
+    && n $version \
+    && ln -s "$N_PREFIX/n/versions/$version" "$N_PREFIX/n/current"
+}
+
+
+
+
+if test $# -eq 0; then
+  display_help
+else
+  while test $# -ne 0; do
+    case $1 in
+      drupal) new_drupal_project $@; exit ;;
+      rails) new_rails_project $@; exit ;;
+
+      -v|--version) display_version ;;
+      -h|--help|help) display_help ;;
+    esac
+    shift
+  done
+fi
