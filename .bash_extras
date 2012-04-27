@@ -123,10 +123,10 @@ prompt_func() {
 
     if test $previous_return_value -eq 0
     then
-        PS1="${prompt}$ "
+        PS1="${prompt}λ "
         PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] $PS1"
     else
-        PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] ${prompt}\[${COLOR_LIGHT_RED}\]$ \[${COLOR_NC}\]"
+        PS1="\[${COLOR_BROWN}\]\$(~/.rvm/bin/rvm-prompt i g s)\[${COLOR_NC}\] ${prompt}\[${COLOR_LIGHT_RED}\]λ \[${COLOR_NC}\]"
     fi
 }
 PROMPT_COMMAND=prompt_func
@@ -229,3 +229,11 @@ apacheaccesslog(){
 
 #source $rvm_path/contrib/ps1_functions
 #ps1_set --prompt ∫
+
+
+# free RAM
+freeram() {
+  sync
+  echo "madhu" | su -S
+  echo 3 > /proc/sys/vm/drop_caches
+}

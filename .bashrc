@@ -80,7 +80,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# include bash extras 
+# include bash extras
 
 if [ -f ~/.bash_extras ]; then
     . ~/.bash_extras
