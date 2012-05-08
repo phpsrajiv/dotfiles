@@ -1,19 +1,29 @@
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+#!/usr/bin/env bash
 
-# /usr/lib/ruby/gems/1.8
-test -d "$HOME/bin" &&
-PATH="$HOME/bin:$PATH"
-export GEM_HOME=$HOME/.gem/ruby/1.8
-export PATH=$HOME/.gem/ruby/1.8/bin:$PATH
-export NODE_INSTALL_PATH=$HOME/local/node
-export PATH=$NODE_INSTALL_PATH/bin:$PATH
-export NODE_PATH=$NODE_INSTALL_PATH:$NODE_INSTALL_PATH/lib/node_modules
-export MONGO_INSTALL_PATH=$HOME/local/mongo
+PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+
+# custom executables
+PATH=$HOME/bin:$PATH
+
+# rvm
+PATH=$HOME/.rvm/bin:$PATH
+source ~/.rvm/scripts/rvm
+
+
+# imagemagick
+PATH=$HOME/local/imagemagick/bin:$PATH
+export MAGICK_HOME="$HOME/local/imagemagick"
+export LD_LIBRARY_PATH="$HOME/local/imagemagick/lib"
+export PKG_CONFIG_PATH="$HOME/local/imagemagick/lib/pkgconfig"
+
+# nodejs
+PATH=$HOME/local/node/bin:$PATH
+
+# NODE_PATH
+export NODE_PATH=$HOME/local/node/lib/node_modules
+
+# mongodb
 export MONGO_DB_PATH=/data/db
-export PATH=$MONGO_INSTALL_PATH/bin:$PATH
-export PATH=$HOME/local/sphinx/bin:$PATH
-export PATH=$HOME/local/php/bin:$PATH
-export PATH=$HOME/local/drush:$PATH
-export PYTHONPATH=$HOME/local/nltk
-export NLTK_DATA=$HOME/local/nltk_data
-export PATH=/home/git/bin:$PATH
+PATH=$HOME/local/mongo/bin:$PATH
+
+export PATH
