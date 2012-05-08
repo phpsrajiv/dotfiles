@@ -1,5 +1,7 @@
+#!/usr/bin/env bash
+
 # default editors
-VISUAL=gedit; export VISUAL
+VISUAL=subl; export VISUAL
 EDITOR=vim; export EDITOR
 
 # get the ip address of a host easily.
@@ -11,35 +13,6 @@ getip () {
     echo "ping:"
     ping -c1 -t1 $each | egrep -o '([0-9]+\.){3}[0-9]+' | head -n1
   done
-}
-
-# Creates a new project by creating a directory of specified name and initializing git.
-# If repo url is provided, it adds the remote branch as origin
-# Also creates a README and .gitignore file
-newproject() {
-  if [ ! -d $1 ]; then
-    mkdir $1
-    cd $1
-    echo 'Creating new project...';
-    git init
-    echo 'Initializing git...';
-    echo '#' $1 > README.md
-    echo 'Adding README file...';
-    echo "*.swp" > .gitignore
-    echo 'Adding .gitignore file...';
-
-    git add .
-    git commit -am "first commit"
-
-    if [ -n "$2" ]; then
-      git remote add origin $2
-      echo 'Adding git remote origin...';
-    fi
-    echo 'Project setup complete!';
-  else
-    echo 'Directory with name' $1 'already exists';
-    echo 'Aborted!'
-  fi
 }
 
 showsshkey(){
@@ -159,10 +132,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.paths ]; then
-    . ~/.paths
-fi
-
 # enable en_US locale w/ utf-8 encodings if not already configured
 : ${LANG:="en_US.UTF-8"}
 : ${LANGUAGE:="en"}
@@ -210,9 +179,7 @@ openphpini(){
   sudo $EDITOR /usr/local/lib/php.ini
 }
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM function
-
-source $rvm_path/scripts/completion
+source $HOME/.rvm/scripts/completion
 
 awesome_bash_prompt () {
   source $rvm_path/contrib/ps1_functions
