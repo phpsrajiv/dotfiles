@@ -14,7 +14,7 @@
   status = auto
 [color "branch"]
   current = yellow reverse
-  local = yellow 
+  local = yellow
   remote = green
 [color "diff"]
   meta = yellow bold
@@ -29,5 +29,5 @@
   user = madhums
   token = 1a9c96d572c2ee246c07ea7f260604fe
 [core]
-	editor = gedit
-	excludesfile = /home/madhu/.gitignore_global
+  editor = subl
+  excludesfile = /home/madhu/.git-global-ignore
